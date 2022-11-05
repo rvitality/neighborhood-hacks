@@ -1,3 +1,5 @@
+@use "./styles/typography.scss" as *;
+@use "./styles/utils.scss" as *;
 @use "./styles/mixins.scss" as *;
 
 *,
@@ -13,7 +15,7 @@
 }
 
 html {
-    font-size: 100%;
+    font-size: 110%;
 
     @include respond(tab-land) {
         // width < 1200?
@@ -35,6 +37,15 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Ubuntu", sans-serif;
+}
+
 ul li {
     list-style: none;
 }
@@ -42,12 +53,22 @@ ul li {
 a {
     color: inherit;
     text-decoration: none;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        filter: brightness(1.35);
+    }
 }
 
-input {
+input,
+textarea {
     font-family: inherit;
 }
 
 button {
     cursor: pointer;
+}
+
+img {
+    max-width: 100%;
 }
