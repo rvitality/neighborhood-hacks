@@ -1,0 +1,32 @@
+.hero {
+    background-color: #f6f5f1;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: hidden;
+    margin-top: -20vh;
+    z-index: 1;
+    position: relative;
+
+    .left {
+        position: relative;
+        margin-top: 5rem;
+        z-index: 2;
+        width: 45%;
+
+        .primary-btn {
+            margin-top: 0.5rem;
+        }
+    }
+
+    .right {
+        width: 55%;
+        img {
+            position: relative;
+            max-width: 70rem;
+            margin-left: -12rem;
+            z-index: 1;
+        }
+    }
+}
