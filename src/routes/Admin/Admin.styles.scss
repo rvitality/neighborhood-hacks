@@ -1,0 +1,45 @@
+.admin {
+    display: flex;
+
+    .left-panel {
+        background-color: #fbf7f4;
+
+        padding-left: 5rem;
+        color: #3f1642;
+        font-weight: 500;
+        height: 100vh;
+
+        .first-level {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+        }
+
+        .second-level {
+            margin-top: 0.6rem;
+            margin-left: 1.5rem;
+            li {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        ul li a {
+            width: 100%;
+            display: flex;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .main-content {
+        padding: 0 4rem;
+    }
+}
