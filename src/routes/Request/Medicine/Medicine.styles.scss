@@ -1,0 +1,187 @@
+.medicine {
+    .cover-img {
+        width: 100%;
+        height: 25rem;
+        object-fit: cover;
+        margin-top: -20vh;
+    }
+
+    .content {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .heading-secondary {
+        font-size: 2.8rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: #000;
+    }
+
+    .illustration {
+        object-fit: contain;
+    }
+
+    .warning {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: #ddd;
+        padding: 1.15rem 1.5rem;
+        svg {
+            font-size: 1.25rem;
+            color: red;
+        }
+    }
+
+    .form {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        &__box {
+            display: flex;
+            gap: 2rem;
+
+            small {
+                color: #4e4d4d;
+            }
+
+            .heading {
+                font-weight: 500;
+                font-size: 1.15rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 1.25rem;
+
+                input,
+                textarea {
+                    font-size: inherit;
+                    padding: 0.25rem 0.5rem;
+                }
+
+                textarea {
+                    width: 20rem;
+                }
+            }
+
+            .control {
+                display: grid;
+                width: 70%;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                gap: 0.5rem;
+
+                label {
+                    color: #4e4d4d;
+                }
+            }
+        }
+
+        .radion-buttons {
+            display: flex;
+            gap: 2rem;
+
+            div {
+                display: flex;
+                gap: 0.5rem;
+            }
+        }
+
+        .submission {
+            border-top: 1px solid #999;
+            padding-top: 0.5rem;
+            width: 100%;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+    }
+
+    .number {
+        background: #ffac5d;
+        width: 2.15rem;
+        height: 2.15rem;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 50%;
+        font-weight: bold;
+    }
+
+    .img-upload-container {
+        height: 20rem;
+        width: 20rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        input {
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
+
+    // ! RIGHT SIDE --------------------
+    .right-panel {
+        width: 100%;
+    }
+
+    .content-info {
+        border: 2px solid #ccc;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        margin-left: auto;
+        width: 90%;
+
+        svg {
+            font-size: 1.25rem;
+        }
+
+        .heading {
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4e4d4d;
+        }
+
+        .contact {
+            margin-top: 2rem;
+
+            a {
+                display: inline-block;
+                margin-top: 1rem;
+                background-color: #db893c;
+                color: #fff;
+                padding: 1rem 1.7rem;
+                border-radius: 0.3rem;
+
+                &:hover {
+                    filter: brightness(1.05);
+                }
+            }
+        }
+    }
+}
