@@ -1,0 +1,56 @@
+.heading-primary {
+    color: #3f1642;
+    font-size: 4.25rem;
+    line-height: 1.1;
+}
+
+.heading-secondary {
+    color: #3f1642;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 auto;
+}
+.heading-tertiary {
+    font-weight: 500;
+    letter-spacing: 0.25rem;
+    color: #27bbad;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+.section-paragraph {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    color: #4e4d4d;
+}
+
+.primary-btn {
+    color: #fff;
+    padding: 0.55rem 1.6rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: 2rem;
+    background-image: linear-gradient(to right, #803e85, #5b1b60);
+    transition: all 0.25s ease-in-out;
+    display: inline-block;
+
+    &:hover {
+        filter: brightness(1.35);
+    }
+}
+
+.submit-btn {
+    color: #fff;
+    background-color: #333;
+    padding: 0.7rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    font-size: 1.05rem;
+    transition: all 0.25s ease-in-out;
+    display: inline-block;
+
+    &:hover {
+        filter: brightness(1.35);
+    }
+}
