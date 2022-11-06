@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+
 import { useRequestContext } from "../../../context/RequestsContext";
 
 import { MdHealthAndSafety } from "react-icons/md";
@@ -79,6 +81,7 @@ const Medicine = () => {
         const [date, time] = enteredDateTime.split("T");
 
         const request = {
+            requestID: uuidv4(),
             user: {
                 name: enteredName,
                 address: enteredAddress,
@@ -86,13 +89,13 @@ const Medicine = () => {
             },
             comment: enteredComment,
             deliveryOrPickup,
-            status: "Review",
+            status: "review",
             identificationSrc: identicationImgInput,
             prescriptionSrc: prescriptionImgInput,
             date,
             time,
+            requestedMedicines: enteredMedicines.split(",").map(med => med.trim()),
         };
-        console.log(request);
 
         addNewMedicinesRequest(request);
     };
