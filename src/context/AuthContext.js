@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext({
+    user: {},
     isLoggedIn: false,
     login: token => {},
     logout: () => {},
@@ -15,11 +16,11 @@ export const AuthContextProvider = props => {
     const navigate = useNavigate();
 
     const loginHandler = user => {
-        const { email, password } = user;
+        console.log(user);
         setLoginStatus({ type: "success", content: "Success." });
-        setUser({ email, password });
+        setUser(user);
         setIsLoggedIn(true);
-        navigate("/schedule");
+        navigate("/account");
     };
 
     const logoutHandler = () => {
