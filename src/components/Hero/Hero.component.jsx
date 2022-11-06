@@ -14,8 +14,9 @@ const Hero = () => {
                     with us.
                 </h1>
                 <p className="section-paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, numquam.
-                    Animi consectetur facilis deleniti ipsam!
+                    Some do it because they believe it’s right, some do it because they believe in
+                    karma or that it’ll come back to them, and some help because they want to be
+                    appreciated for their efforts.
                 </p>
                 <Link to="" className="primary-btn">
                     Learn More
