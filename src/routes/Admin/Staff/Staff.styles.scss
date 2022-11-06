@@ -1,0 +1,70 @@
+.staff {
+    .photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-radius: 1rem;
+        gap: 5rem;
+
+        &__item {
+            position: relative;
+            border-radius: 1rem;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+                rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            img {
+                box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+                height: 20rem;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 1rem;
+                filter: brightness(0.9);
+            }
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 0.5rem;
+                padding: 1rem 1rem 0.25rem 1rem;
+                text-align: center;
+
+                .name-age {
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+
+                    &:first-child {
+                        font-weight: bold;
+                    }
+                }
+
+                .expertise {
+                    font-weight: lighter;
+                    font-size: 0.85rem;
+                }
+                .status {
+                    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+                    color: #fff;
+                    z-index: 3;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    filter: brightness(1.25);
+                    text-transform: capitalize;
+                    font-weight: lighter;
+
+                    &.working {
+                        background-color: #27bbad;
+                    }
+
+                    &.standby {
+                        background-color: #2a4441;
+                    }
+                }
+            }
+        }
+    }
+}
