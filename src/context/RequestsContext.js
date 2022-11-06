@@ -23,10 +23,48 @@ const requestsReducer = (state, action) => {
     const { type, payload } = action;
 
     if (type === "ADD_MEDICINE_REQUEST") {
-        console.log("ADD_REQUEST");
-        console.log("PAYLOAD ------------------------");
-        console.log(payload.request);
-        // return { ...state, medicineRequests: payload.products };
+        const requests = [...state.medicineRequests, payload.request];
+        localStorage.setItem("medicineRequests", JSON.stringify(requests));
+
+        return { ...state, medicineRequests: requests };
+    }
+
+    if (type === "UPDATE_REQUEST") {
+        const { change: requestType, requestID, assignedPersonnel } = payload.data;
+
+        let requests = [];
+
+        if (requestType === "status") {
+            // find request item
+            requests = [...state.medicineRequests].map(item => {
+                if (item.requestID === requestID) {
+                    item["status"] = item["status"] === "approved" ? "review" : "approved";
+                }
+                return item;
+            });
+        }
+
+        if (requestType === "assigned-personnel") {
+            console.log("here");
+            console.log(assignedPersonnel);
+            requests = [...state.medicineRequests].map(item => {
+                if (item.requestID === requestID) {
+                    item["assignedPersonnel"] = assignedPersonnel;
+                }
+                return item;
+            });
+        }
+
+        console.log(requests);
+
+        localStorage.setItem("medicineRequests", JSON.stringify(requests));
+
+        return { ...state, medicineRequests: requests };
+    }
+
+    if (type === "SET_REQUESTS") {
+        const { data } = payload;
+        return { ...state, medicineRequests: data };
     }
 
     return state;
@@ -45,9 +83,20 @@ export const RequestsContextProvider = props => {
         dispatch({ type: "ADD_MEDICINE_REQUEST", payload: { request } });
     };
 
+    const updateMedicinesRequest = data => {
+        console.log(data);
+        dispatch({ type: "UPDATE_REQUEST", payload: { data } });
+    };
+
+    const setMedicinesRequest = data => {
+        dispatch({ type: "SET_REQUESTS", payload: { data } });
+    };
+
     const contextValue = {
         medicineRequests: state.medicineRequests,
         addNewMedicinesRequest,
+        updateMedicinesRequest,
+        setMedicinesRequest,
     };
 
     return (
