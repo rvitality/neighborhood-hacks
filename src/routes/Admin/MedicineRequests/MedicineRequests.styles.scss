@@ -1,6 +1,11 @@
 .medicine-requests {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
     .content-container {
         padding: 2rem 2rem 1rem 2rem;
+        box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
         border: 1px solid #aaa;
         display: flex;
         flex-direction: column;
@@ -123,15 +128,27 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            h3 {
+
+            &__text {
+                h3 {
+                    margin: 0;
+                }
                 display: flex;
                 align-items: center;
-                gap: 2rem;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 1rem;
 
                 svg {
-                    font-size: 2rem;
                     color: green;
+                    font-size: 1.5rem;
                 }
+            }
+
+            &__value {
+                color: #444;
+                font-size: 1.15rem;
+                text-transform: uppercase;
             }
 
             .approve-btn {
@@ -148,6 +165,95 @@
                 &:hover {
                     filter: brightness(1.25);
                 }
+            }
+        }
+    }
+
+    .staff-list-container {
+        position: relative;
+
+        .staff-list {
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            position: relative;
+            height: 7rem;
+            transition: all 0.25s;
+            overflow: auto;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -0.5rem;
+                left: 0;
+                right: 0;
+                height: 2.5rem;
+                z-index: 8;
+                filter: blur(0.6rem);
+                background-color: #fff;
+                opacity: 0.8;
+            }
+
+            .person {
+                padding: 1rem;
+                display: flex;
+                gap: 1rem;
+                transition: all 0.25s ease-in-out;
+
+                &:hover {
+                    background-color: #eee;
+                    cursor: pointer;
+                }
+
+                .expertise {
+                    font-weight: lighter;
+                    font-size: 0.7rem;
+                }
+
+                img {
+                    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+                    object-fit: cover;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    border-radius: 50%;
+                }
+            }
+
+            &.expand {
+                height: 20rem;
+                overflow-y: auto;
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        .caret {
+            position: absolute;
+            right: -0.5rem;
+            top: -0.5rem;
+            background-color: rgb(0 0 0 / 80%);
+            color: #fff;
+            width: 1.7rem;
+            height: 1.7rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                // transform: scale(1.05);
+                background-color: rgb(0 0 0 / 100%);
+            }
+            &.rotate {
+                transform: rotate(-180deg);
             }
         }
     }
