@@ -4,6 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import { IoIosStats } from "react-icons/io";
 import { AiFillMedicineBox } from "react-icons/ai";
 import { FaClipboardList, FaBoxOpen } from "react-icons/fa";
+import { MdPeopleAlt } from "react-icons/md";
 
 import "./Admin.styles.scss";
 
@@ -17,6 +18,12 @@ const Admin = () => {
                             <Link to="" className="label">
                                 <IoIosStats />
                                 Dashboard
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="staff" className="label">
+                                <MdPeopleAlt />
+                                Staff
                             </Link>
                         </li>
                         <li>
