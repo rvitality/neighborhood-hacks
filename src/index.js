@@ -7,16 +7,17 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { RequestsContextProvider } from "./context/RequestsContext";
 
 import { BrowserRouter } from "react-router-dom";
+import { StaffContextProvider } from "./context/StaffContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <AuthContextProvider>
-                <RequestsContextProvider>
+    <BrowserRouter>
+        <AuthContextProvider>
+            <RequestsContextProvider>
+                <StaffContextProvider>
                     <App />
-                </RequestsContextProvider>
-            </AuthContextProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+                </StaffContextProvider>
+            </RequestsContextProvider>
+        </AuthContextProvider>
+    </BrowserRouter>
 );
