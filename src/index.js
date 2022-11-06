@@ -6,12 +6,12 @@ import App from "./App";
 import { AuthContextProvider } from "./context/AuthContext";
 import { RequestsContextProvider } from "./context/RequestsContext";
 
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { StaffContextProvider } from "./context/StaffContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <BrowserRouter>
+    <HashRouter>
         <AuthContextProvider>
             <RequestsContextProvider>
                 <StaffContextProvider>
@@ -19,5 +19,5 @@ root.render(
                 </StaffContextProvider>
             </RequestsContextProvider>
         </AuthContextProvider>
-    </BrowserRouter>
+    </HashRouter>
 );
