@@ -123,7 +123,7 @@ export const StaffContextProvider = props => {
     const [staff, setStaff] = useState(FAKE_STAFF);
 
     const addNewStaff = user => {
-        console.log(user);
+        setStaff(prevState => [...prevState, user]);
     };
 
     const contextValue = {

@@ -10,11 +10,13 @@ import photoTeen from "../../assets/photos/photo-teen.jpg";
 
 import Deso from "deso-protocol";
 import { useState } from "react";
-import { useStaffContext } from "../../context/StaffContext";
+// import { useStaffContext } from "../../context/StaffContext";
+import { useMembersContext } from "../../context/MembersContext";
 const deso = new Deso();
 
 const Header = () => {
-    const { addNewStaff } = useStaffContext();
+    // const { addNewStaff } = useStaffContext();
+    const { addNewMember } = useMembersContext();
     const { login, logout, isLoggedIn } = useAuthContext();
 
     const [isAdmin, setIsAdmin] = useState("");
@@ -46,7 +48,7 @@ const Header = () => {
                 age: 42,
                 sex: "male",
                 phone: "094369256913",
-                expertise: ["Driving", "Plumbing", "Carpentry"],
+                expertise: [],
                 photo: photoAdult,
                 status: "Standby",
                 role: "admin",
@@ -55,17 +57,18 @@ const Header = () => {
             // context, set user data
             loggedInUser = {
                 id: "53e7f6f124d9d6d711355c0bd321f14ccbd96d73142f530657ece8e9c46310c652baa3f1fd59510a2f058d56da70c5108a007aeba9df0639c44d32286bdf234c",
-                name: "John Might",
-                address: "2143 Sta Maria, Dolores 1410",
-                age: 22,
+                name: "Renz Vital",
+                address: "2143 Angeles City 1410",
+                age: 21,
                 sex: "male",
-                phone: "0941369256913",
-                expertise: ["Cleaning", "Garden Maintenance"],
+                phone: "09352632153",
+                expertise: ["Driving", "Garden Maintenance", "Cleaning"],
                 photo: photoTeen,
                 status: "Standby",
                 role: "user",
             };
-            addNewStaff(loggedInUser);
+            // addNewStaff(loggedInUser);
+            addNewMember(loggedInUser);
         }
 
         login(loggedInUser);
@@ -79,7 +82,7 @@ const Header = () => {
         <>
             <header className="header section-px">
                 <Link to="/" className="logo">
-                    thehelpingclub
+                    thehelping.club
                 </Link>
 
                 <nav>

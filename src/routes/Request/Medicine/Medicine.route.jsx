@@ -7,7 +7,7 @@ import { useRequestContext } from "../../../context/RequestsContext";
 
 import { MdHealthAndSafety } from "react-icons/md";
 import { VscWarning } from "react-icons/vsc";
-import { AiOutlineCheckSquare } from "react-icons/ai";
+import { AiOutlineCheckSquare, AiOutlineInfoCircle } from "react-icons/ai";
 
 import imgPlaceholder from "../../../assets/images/img-placeholder.jpg";
 import illustrationSrc from "../../../assets/images/medical-prescription.gif";
@@ -16,6 +16,9 @@ import "./Medicine.styles.scss";
 
 const Medicine = () => {
     const { addNewMedicinesRequest } = useRequestContext();
+
+    const [showSubmitMessage, setShowSubmitMessage] = useState(false);
+    console.log(showSubmitMessage);
 
     const nameRef = useRef();
     const addressRef = useRef();
@@ -31,12 +34,6 @@ const Medicine = () => {
 
     const [prescriptionImgInput, setPrescriptionImgInput] = useState();
     const [identicationImgInput, setIdenticationImgInput] = useState();
-
-    // const basicInfoChangeHandler = e => {
-    //     const key = e.target.id;
-    //     const value = e.target.value;
-    //     setBasicInfo(prevState => ({ ...prevState, [key]: value }));
-    // };
 
     const fileReader = new FileReader();
 
@@ -95,10 +92,19 @@ const Medicine = () => {
             date,
             time,
             requestedMedicines: enteredMedicines.split(",").map(med => med.trim()),
+            assignedPersonnel: {},
         };
 
         addNewMedicinesRequest(request);
+        setShowSubmitMessage(true);
     };
+
+    const afterSubmissionMessage = (
+        <div className="submission-msg">
+            <AiOutlineInfoCircle />
+            <p>We'll verify your requests, please wait for further instructions or updates.</p>
+        </div>
+    );
 
     return (
         <section className="medicine ">
@@ -108,190 +114,196 @@ const Medicine = () => {
                 alt=""
             />
             <div className="content section-py section-px">
-                <div>
-                    <div className="warning">
-                        <VscWarning />
-                        <p>You need prescriptions and other documents.</p>
-                    </div>
+                <div className="left">
+                    {!showSubmitMessage && (
+                        <div className="warning">
+                            <VscWarning />
+                            <p>You need prescriptions and other documents.</p>
+                        </div>
+                    )}
+
                     <h1 className="heading-secondary">
                         <MdHealthAndSafety />
                         <span>Request for Medicines</span>
                     </h1>
 
-                    <form onSubmit={submitHandler} className="form">
-                        {/* BOX 1 */}
-                        <div className="form__box">
-                            <div className="number">1</div>
-                            <div className="fields">
-                                <div className="heading">Please fill out every fields</div>
-                                <div className="inputs">
-                                    <div className="control">
-                                        <label htmlFor="name">Name: </label>
-                                        <input ref={nameRef} id="name" type="text" />
-                                    </div>
-                                    <div className="control">
-                                        <label htmlFor="address">Address: </label>
-                                        <input ref={addressRef} id="address" type="text" />
-                                    </div>
-                                    <div className="control">
-                                        <label htmlFor="phone">Phone No: </label>
-                                        <input ref={phoneRef} id="phone" type="tel" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* BOX 2 */}
-                        <div className="form__box">
-                            <div className="number">2</div>
-                            <div className="fields">
-                                <div className="heading">
-                                    <p>Name of medicines</p>
-                                    <small>Please separate each name with a comma.</small>
-                                </div>
-                                <div className="inputs">
-                                    <textarea
-                                        ref={medicinesRef}
-                                        className="medicines-name"
-                                        rows="5"
-                                    ></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* BOX 3 */}
-                        <div className="form__box">
-                            <div className="number">3</div>
-                            <div className="fields">
-                                <div className="heading">
-                                    Add comment <small>(optional)</small>
-                                </div>
-                                <div className="inputs">
-                                    <textarea
-                                        ref={commentRef}
-                                        className="medicines-name"
-                                        rows="5"
-                                    ></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        {/* BOX 4 */}
-                        <div className="form__box">
-                            <div className="number">4</div>
-                            <div className="fields">
-                                <div className="heading">
-                                    <p>Prescriptions</p>
-                                </div>
-                                <div className="inputs">
-                                    <div
-                                        className="img-upload-container"
-                                        style={{
-                                            backgroundImage: `url(${
-                                                prescriptionImgInput || imgPlaceholder
-                                            })`,
-                                        }}
-                                    >
-                                        <input
-                                            type="file"
-                                            onChange={prescriptionImgChangeHandler}
-                                            accept="image/png, image/jpeg"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* BOX 5 */}
-                        <div className="form__box">
-                            <div className="number">5</div>
-                            <div className="fields">
-                                <div className="heading">
-                                    <p>
-                                        Identification{" "}
-                                        <small>
-                                            (<em>Birth Certificate, Goverment-Issued ID</em>)
-                                        </small>
-                                    </p>
-                                </div>
-                                <div className="inputs">
-                                    <div
-                                        className="img-upload-container"
-                                        style={{
-                                            backgroundImage: `url(${
-                                                identicationImgInput || imgPlaceholder
-                                            })`,
-                                        }}
-                                    >
-                                        <input
-                                            type="file"
-                                            onChange={identificationImgChangeHandler}
-                                            accept="image/png, image/jpeg"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* BOX 6 */}
-                        <div className="form__box">
-                            <div className="number">6</div>
-                            <div className="fields">
-                                <div className="heading">
-                                    <span>Select if delivery or pickup</span>
-                                </div>
-                                <div className="inputs">
-                                    <div className="radion-buttons">
-                                        <div>
-                                            <label htmlFor="delivery">Delivery</label>
-                                            <input
-                                                type="radio"
-                                                id="delivery"
-                                                name="mode"
-                                                value="delivery"
-                                                ref={deliveryRef}
-                                            />
+                    {!showSubmitMessage && (
+                        <form onSubmit={submitHandler} className="form">
+                            {/* BOX 1 */}
+                            <div className="form__box">
+                                <div className="number">1</div>
+                                <div className="fields">
+                                    <div className="heading">Please fill out every fields</div>
+                                    <div className="inputs">
+                                        <div className="control">
+                                            <label htmlFor="name">Name: </label>
+                                            <input ref={nameRef} id="name" type="text" />
                                         </div>
-                                        <div>
-                                            <label htmlFor="pickup">Pickup</label>
+                                        <div className="control">
+                                            <label htmlFor="address">Address: </label>
+                                            <input ref={addressRef} id="address" type="text" />
+                                        </div>
+                                        <div className="control">
+                                            <label htmlFor="phone">Phone No: </label>
+                                            <input ref={phoneRef} id="phone" type="tel" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* BOX 2 */}
+                            <div className="form__box">
+                                <div className="number">2</div>
+                                <div className="fields">
+                                    <div className="heading">
+                                        <p>Name of medicines</p>
+                                        <small>Please separate each name with a comma.</small>
+                                    </div>
+                                    <div className="inputs">
+                                        <textarea
+                                            ref={medicinesRef}
+                                            className="medicines-name"
+                                            rows="5"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* BOX 3 */}
+                            <div className="form__box">
+                                <div className="number">3</div>
+                                <div className="fields">
+                                    <div className="heading">
+                                        Add comment <small>(optional)</small>
+                                    </div>
+                                    <div className="inputs">
+                                        <textarea
+                                            ref={commentRef}
+                                            className="medicines-name"
+                                            rows="5"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* BOX 4 */}
+                            <div className="form__box">
+                                <div className="number">4</div>
+                                <div className="fields">
+                                    <div className="heading">
+                                        <p>Prescriptions</p>
+                                    </div>
+                                    <div className="inputs">
+                                        <div
+                                            className="img-upload-container"
+                                            style={{
+                                                backgroundImage: `url(${
+                                                    prescriptionImgInput || imgPlaceholder
+                                                })`,
+                                            }}
+                                        >
                                             <input
-                                                type="radio"
-                                                id="pickup"
-                                                name="mode"
-                                                value="pickup"
-                                                ref={pickupRef}
+                                                type="file"
+                                                onChange={prescriptionImgChangeHandler}
+                                                accept="image/png, image/jpeg"
                                             />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* BOX 7 */}
-                        <div className="form__box">
-                            <div className="number">7</div>
-                            <div className="fields">
-                                <div className="heading">
-                                    <span>Pick a date and time</span>
-                                </div>
-                                <div className="inputs">
-                                    <input type="datetime-local" ref={dateTimeRef} />
+                            {/* BOX 5 */}
+                            <div className="form__box">
+                                <div className="number">5</div>
+                                <div className="fields">
+                                    <div className="heading">
+                                        <p>
+                                            Identification{" "}
+                                            <small>
+                                                (<em>Birth Certificate, Goverment-Issued ID</em>)
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div className="inputs">
+                                        <div
+                                            className="img-upload-container"
+                                            style={{
+                                                backgroundImage: `url(${
+                                                    identicationImgInput || imgPlaceholder
+                                                })`,
+                                            }}
+                                        >
+                                            <input
+                                                type="file"
+                                                onChange={identificationImgChangeHandler}
+                                                accept="image/png, image/jpeg"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="form__box">
-                            <div className="submission">
-                                <div>
-                                    <strong>dobetter</strong> is committed to protecting and
-                                    respecting your privacy, and we'll only use your personal
-                                    information to administer your account and to validate if you
-                                    are eligible for such requests.
-                                    <br />
+                            {/* BOX 6 */}
+                            <div className="form__box">
+                                <div className="number">6</div>
+                                <div className="fields">
+                                    <div className="heading">
+                                        <span>Select if delivery or pickup</span>
+                                    </div>
+                                    <div className="inputs">
+                                        <div className="radion-buttons">
+                                            <div>
+                                                <label htmlFor="delivery">Delivery</label>
+                                                <input
+                                                    type="radio"
+                                                    id="delivery"
+                                                    name="mode"
+                                                    value="delivery"
+                                                    ref={deliveryRef}
+                                                />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="pickup">Pickup</label>
+                                                <input
+                                                    type="radio"
+                                                    id="pickup"
+                                                    name="mode"
+                                                    value="pickup"
+                                                    ref={pickupRef}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button type="submit" className="submit-btn">
-                                    Submit
-                                </button>
                             </div>
-                        </div>
-                    </form>
+
+                            {/* BOX 7 */}
+                            <div className="form__box">
+                                <div className="number">7</div>
+                                <div className="fields">
+                                    <div className="heading">
+                                        <span>Pick a date and time</span>
+                                    </div>
+                                    <div className="inputs">
+                                        <input type="datetime-local" ref={dateTimeRef} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="form__box">
+                                <div className="submission">
+                                    <div>
+                                        <strong>thehelping.club</strong> is committed to protecting
+                                        and respecting your privacy, and we'll only use your
+                                        personal information to administer your account and to
+                                        validate if you are eligible for such requests.
+                                        <br />
+                                    </div>
+                                    <button type="submit" className="submit-btn">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    )}
+                    {showSubmitMessage && afterSubmissionMessage}
                 </div>
                 <aside className="right-panel">
                     <img className="illustration" src={illustrationSrc} alt="" />

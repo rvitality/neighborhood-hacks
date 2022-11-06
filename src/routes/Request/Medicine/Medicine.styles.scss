@@ -24,6 +24,10 @@
         object-fit: contain;
     }
 
+    .left {
+        width: 100%;
+    }
+
     .warning {
         margin-bottom: 1.5rem;
         display: flex;
@@ -182,6 +186,19 @@
                     filter: brightness(1.05);
                 }
             }
+        }
+    }
+
+    .submission-msg {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background-color: #ddd;
+        padding: 1.15rem 1.5rem;
+        svg {
+            font-size: 2rem;
+            color: orange;
         }
     }
 }

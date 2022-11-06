@@ -2,11 +2,11 @@ import React from "react";
 import { useAuthContext } from "../../context/AuthContext";
 
 import { FaUserAlt } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
 import { MdCall } from "react-icons/md";
 import { MdLocationOn } from "react-icons/md";
 import { GiSkills } from "react-icons/gi";
 import { AiOutlineCalendar } from "react-icons/ai";
+import { TbHierarchy2 } from "react-icons/tb";
 
 // import timelineSVG from "../../assets/timeline.svg";
 
@@ -63,7 +63,7 @@ const Account = () => {
                     <div className="controls">
                         <div className="control">
                             <div className="control__icon">
-                                <MdOutlineEmail />
+                                <FaUserAlt />
                             </div>
                             <div className="control__texts">
                                 <p className="label">Name</p>
@@ -82,7 +82,7 @@ const Account = () => {
 
                         <div className="control">
                             <div className="control__icon">
-                                <FaUserAlt />
+                                <TbHierarchy2 />
                             </div>
                             <div className="control__texts">
                                 <p className="label">Role</p>

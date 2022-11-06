@@ -8,6 +8,7 @@ import { RequestsContextProvider } from "./context/RequestsContext";
 
 import { HashRouter } from "react-router-dom";
 import { StaffContextProvider } from "./context/StaffContext";
+import { MembersContextProvider } from "./context/MembersContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,9 @@ root.render(
         <AuthContextProvider>
             <RequestsContextProvider>
                 <StaffContextProvider>
-                    <App />
+                    <MembersContextProvider>
+                        <App />
+                    </MembersContextProvider>
                 </StaffContextProvider>
             </RequestsContextProvider>
         </AuthContextProvider>

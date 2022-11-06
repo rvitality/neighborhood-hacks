@@ -11,6 +11,7 @@ import MedicineRequests from "./routes/Admin/MedicineRequests/MedicineRequests.r
 import Staff from "./routes/Admin/Staff/Staff.route";
 import Account from "./routes/Account/Account.route";
 import { useAuthContext } from "./context/AuthContext";
+import Members from "./routes/Admin/Members/Members.route";
 
 const App = () => {
     const { isLoggedIn } = useAuthContext();
@@ -26,8 +27,15 @@ const App = () => {
                     element={isLoggedIn ? <Medicine /> : <Navigate tp="/" />}
                 />
                 <Route path="/admin" element={isLoggedIn ? <Admin /> : <Navigate to="/" />}>
-                    <Route path="medicine_requests" element={<MedicineRequests />} />
-                    <Route path="staff" element={<Staff />} />
+                    <Route
+                        path="medicine_requests"
+                        element={isLoggedIn ? <MedicineRequests /> : <Navigate to="/" />}
+                    />
+                    <Route path="staff" element={isLoggedIn ? <Staff /> : <Navigate to="/" />} />
+                    <Route
+                        path="members"
+                        element={isLoggedIn ? <Members /> : <Navigate to="/" />}
+                    />
                 </Route>
             </Route>
 

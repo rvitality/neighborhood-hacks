@@ -84,7 +84,6 @@ export const RequestsContextProvider = props => {
     };
 
     const updateMedicinesRequest = data => {
-        console.log(data);
         dispatch({ type: "UPDATE_REQUEST", payload: { data } });
     };
 
