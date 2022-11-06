@@ -11,9 +11,7 @@ const HowItWorks = () => {
         <section className="how-it-works section-px section-py">
             <div className="heading">
                 <h2 className="heading-tertiary">How it Works</h2>
-                <div className="heading-secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vitae.
-                </div>
+                <div className="heading-secondary">Once verified, it is as easy as a,b,c</div>
             </div>
 
             <div className="steps">
