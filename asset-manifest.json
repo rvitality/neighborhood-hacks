@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/neighborhood-hacks/static/css/main.858ce615.css",
+    "main.js": "/neighborhood-hacks/static/js/main.9bce160c.js",
+    "static/media/hero-illustration.png": "/neighborhood-hacks/static/media/hero-illustration.21a5b2d6dfd80b664c49.png",
+    "static/media/medical-prescription.gif": "/neighborhood-hacks/static/media/medical-prescription.403205ba6b668e5d5f81.gif",
+    "static/media/f2.jpg": "/neighborhood-hacks/static/media/f2.b3e32227059ba856ee2a.jpg",
+    "static/media/m2.jpg": "/neighborhood-hacks/static/media/m2.95cc336d3a5b24292e31.jpg",
+    "static/media/m3.jpg": "/neighborhood-hacks/static/media/m3.f4525cb7d70aa1b4e024.jpg",
+    "static/media/m1.jpg": "/neighborhood-hacks/static/media/m1.02e1da87420b3a4dc7a4.jpg",
+    "static/media/f1.jpg": "/neighborhood-hacks/static/media/f1.42c126d38ecd6a94419f.jpg",
+    "static/media/photo-adult.jpg": "/neighborhood-hacks/static/media/photo-adult.0583d19854c8c24da070.jpg",
+    "static/media/photo-teen.jpg": "/neighborhood-hacks/static/media/photo-teen.ec7a25527cfc9cd5f312.jpg",
+    "static/media/signup.png": "/neighborhood-hacks/static/media/signup.f14184ad905dbf05e2bc.png",
+    "static/media/order.png": "/neighborhood-hacks/static/media/order.56071b33d0a58c83a6b2.png",
+    "index.html": "/neighborhood-hacks/index.html",
+    "main.858ce615.css.map": "/neighborhood-hacks/static/css/main.858ce615.css.map",
+    "main.9bce160c.js.map": "/neighborhood-hacks/static/js/main.9bce160c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.858ce615.css",
+    "static/js/main.9bce160c.js"
+  ]
+}
